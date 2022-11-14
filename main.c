@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "posh.h"
 
 /**
  * main - entry point
