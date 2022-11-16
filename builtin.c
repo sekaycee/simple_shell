@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "posh.h"
 
 /**
  * _myexit - exits the shell
