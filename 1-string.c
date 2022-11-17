@@ -1,7 +1,7 @@
 #include "posh.h"
 
 /**
- * _strcpy - copies a string
+ * _strcpy - copy a string
  * @dest: the destination
  * @src: the source
  *
@@ -23,7 +23,7 @@ char *_strcpy(char *dest, char *src)
 }
 
 /**
- * _strdup - duplicates a string
+ * _strdup - duplicate a string
  * @str: the string to duplicate
  *
  * Return: pointer to the duplicated string
@@ -46,7 +46,7 @@ char *_strdup(const char *str)
 }
 
 /**
- *_puts - prints an input string
+ *_puts - print an input string
  *@str: the string to be printed
  *
  * Return: Nothing
@@ -65,7 +65,7 @@ void _puts(char *str)
 }
 
 /**
- * _putchar - writes the character c to stdout
+ * _putchar - write the character c to stdout
  * @c: The character to print
  *
  * Return: On success 1.
