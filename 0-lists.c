@@ -6,7 +6,7 @@
  * @str: str field of node
  * @num: node index used by history
  *
- * Return: new node added 
+ * Return: new node added
  */
 list_t *add_node(list_t **head, const char *str, int num)
 {
