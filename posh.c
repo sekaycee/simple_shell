@@ -7,19 +7,19 @@
 #define RESET "\x1B[0m"
 
 /**
- * hsh - main shell loop
+ * posh - main shell loop
  * @info: the parameter & return info struct
  * @av: the argument vector from main()
  *
  * Return: 0 on success, 1 on error, or error code
  */
-int hsh(info_t *info, char **av)
+int posh(info_t *info, char **av)
 {
 	ssize_t r = 0;
 	int builtin_ret = 0;
 	char *prompt;
 
-	prompt = BLU BOLD "#Shell" RESET RED BOLD "$ " RESET;
+	prompt = BLU BOLD "[posh]-" RESET RED BOLD "$ " RESET;
 
 	while (r != -1 && builtin_ret != -2)
 	{
@@ -53,7 +53,7 @@ int hsh(info_t *info, char **av)
 }
 
 /**
- * find_builtin - finds a builtin command
+ * find_builtin - find a builtin command
  * @info: the parameter & return info struct
  *
  * Return: -1 if builtin not found,
@@ -63,7 +63,7 @@ int hsh(info_t *info, char **av)
  */
 int find_builtin(info_t *info)
 {
-	int i, built_in_ret = -1;
+	int i, builtin_ret = -1;
 	builtin_t builtintbl[] = {
 		{"exit", _myexit},
 		{"env", _myenv},
@@ -80,14 +80,14 @@ int find_builtin(info_t *info)
 		if (_strcmp(info->argv[0], builtintbl[i].type) == 0)
 		{
 			info->line_count++;
-			built_in_ret = builtintbl[i].func(info);
+			builtin_ret = builtintbl[i].func(info);
 			break;
 		}
-	return (built_in_ret);
+	return (builtin_ret);
 }
 
 /**
- * find_cmd - finds a command in PATH
+ * find_cmd - find a command in PATH
  * @info: the parameter & return info struct
  *
  * Return: void
@@ -129,7 +129,7 @@ void find_cmd(info_t *info)
 }
 
 /**
- * fork_cmd - forks a an exec thread to run cmd
+ * fork_cmd - fork an exec thread to run cmd
  * @info: the parameter & return info struct
  *
  * Return: void

@@ -111,12 +111,11 @@ typedef struct builtin
 } builtin_t;
 
 
-/* shell_loop.c */
-int hsh(info_t *, char **);
+/* posh.c */
+int posh(info_t *, char **);
 int find_builtin(info_t *);
 void find_cmd(info_t *);
 void fork_cmd(info_t *);
-int loophsh(char **);
 
 /* parser.c */
 int is_cmd(info_t *, char *);
@@ -124,6 +123,7 @@ char *dup_chars(char *, int, int);
 char *find_path(info_t *, char *, char *);
 
 /* puts.c */
+void _puts(char *);
 void _eputs(char *);
 int _eputchar(char);
 int _putfd(char c, int fd);
@@ -138,7 +138,6 @@ char *_strcat(char *, char *);
 /* 1-string.c */
 char *_strcpy(char *, char *);
 char *_strdup(const char *);
-void _puts(char *);
 int _putchar(char);
 
 /* 2-string.c */
