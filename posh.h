@@ -126,32 +126,31 @@ char *find_path(info_t *, char *, char *);
 void _puts(char *);
 void _eputs(char *);
 int _eputchar(char);
-int _putfd(char c, int fd);
-int _putsfd(char *str, int fd);
+int _putfd(char, int);
+int _putsfd(char *, int);
 
 /* 0-string.c */
 int _strlen(char *);
 int _strcmp(char *, char *);
-char *starts_with(const char *, const char *);
+char *_strdup(const char *);
 char *_strcat(char *, char *);
+char *_strcpy(char *, char *);
 
 /* 1-string.c */
-char *_strcpy(char *, char *);
-char *_strdup(const char *);
 int _putchar(char);
+char *starts_with(const char *, const char *);
 
 /* 2-string.c */
+char *_strchr(char *, char);
+char **strtow2(char *, char);
+char **strtow(char *, char *);
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
-char *_strchr(char *, char);
-char **strtow(char *, char *);
-char **strtow2(char *, char);
 
 /* memory.c */
-char *_memset(char *, char, unsigned int);
-void ffree(char **);
-void *_realloc(void *, unsigned int, unsigned int);
 int bfree(void **);
+void ffree(char **);
+char *_memset(char *, char, unsigned int);
 
 /* atoi.c */
 int interactive(info_t *);

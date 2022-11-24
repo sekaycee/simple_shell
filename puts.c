@@ -1,6 +1,15 @@
 #include "posh.h"
 
 /**
+ *_puts - print an input string                             *@str: the string to be printed
+ *                                                          * Return: Nothing                                          */
+void _puts(char *str)
+{
+        int i = 0;                                                                                                            if (!str)
+                return;                                            while (str[i] != '\0')                                     {                                                                  _putchar(str[i]);                                          i++;
+        }                                                  }
+
+/**
  *_eputs - prints an input string
  * @str: the string to be printed
  *
