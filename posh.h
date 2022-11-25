@@ -153,7 +153,7 @@ void ffree(char **);
 char *_memset(char *, char, unsigned int);
 void *_realloc(void *, unsigned int, unsigned int);
 
-/* atoi.c */
+/* utils.c */
 int _isalpha(int);
 int _atoi(char *);
 int interactive(info_t *);
@@ -216,7 +216,7 @@ size_t print_list(const list_t *);
 ssize_t get_node_index(list_t *, list_t *);
 list_t *node_starts_with(list_t *, char *, char);
 
-/* vars.c */
+/* checks.c */
 int replace_vars(info_t *);
 int replace_alias(info_t *);
 int replace_string(char **, char *);
