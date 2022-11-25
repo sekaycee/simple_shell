@@ -1,4 +1,5 @@
-<p align="center"> :shell: </p>
+<h1 align="center">:shell:</h1>
+
 # Simple Shell - Posh
 
 This is a simple UNIX command interpreter based on bash and sh
