@@ -1,16 +1,16 @@
 #ifndef _POSH_H_
 #define _POSH_H_
 
+#include <errno.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <sys/types.h>
+#include <limits.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
-#include <limits.h>
-#include <fcntl.h>
-#include <errno.h>
+#include <sys/types.h>
 
 /* for read/write buffers */
 #define READ_BUF_SIZE 1024
@@ -41,7 +41,7 @@ extern char **environ;
  * struct liststr - singly linked list
  * @num: the number field
  * @str: a string
- * @next: points to the next node
+ * @next: point to the next node
  */
 typedef struct liststr
 {
@@ -111,11 +111,11 @@ typedef struct builtin
 } builtin_t;
 
 
-/* posh.c */
-int posh(info_t *, char **);
-int find_builtin(info_t *);
+/* shloop.c */
 void find_cmd(info_t *);
 void fork_cmd(info_t *);
+int find_builtin(info_t *);
+int posh(info_t *, char **);
 
 /* parser.c */
 int is_cmd(info_t *, char *);
@@ -151,33 +151,34 @@ char *_strncat(char *, char *, int);
 int bfree(void **);
 void ffree(char **);
 char *_memset(char *, char, unsigned int);
+void *_realloc(void *, unsigned int, unsigned int);
 
 /* atoi.c */
-int interactive(info_t *);
-int is_delim(char, char *);
 int _isalpha(int);
 int _atoi(char *);
+int interactive(info_t *);
+int is_delim(char, char *);
 
 /* errors.c */
 int _erratoi(char *);
-void print_error(info_t *, char *);
 int print_d(int, int);
-char *convert_number(long int, int, int);
 void remove_comments(char *);
+void print_error(info_t *, char *);
+char *convert_number(long int, int, int);
 
 /* builtin.c */
-int _myexit(info_t *);
 int _mycd(info_t *);
+int _myexit(info_t *);
 int _myhelp(info_t *);
-int _myhistory(info_t *);
 int _myalias(info_t *);
+int _myhistory(info_t *);
 
-/* getline.c */
+/* 2-getters.c */
+void sigintHandler(int);
 ssize_t get_input(info_t *);
 int _getline(info_t *, char **, size_t *);
-void sigintHandler(int);
 
-/* getinfo.c */
+/* 1-getters.c */
 void clear_info(info_t *);
 void free_info(info_t *, int);
 void set_info(info_t *, char **);
@@ -189,37 +190,37 @@ int _myunsetenv(info_t *);
 int populate_env_list(info_t *);
 char *_getenv(info_t *, const char *);
 
-/* getenv.c */
+/* 0-getters.c */
 char **get_environ(info_t *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
 
 /* history.c */
-char *get_history_file(info_t *);
-int write_history(info_t *);
 int read_history(info_t *);
-int build_history_list(info_t *, char *, int);
+int write_history(info_t *);
 int renumber_history(info_t *);
+char *get_history_file(info_t *);
+int build_history_list(info_t *, char *, int);
 
 /* 0-lists.c */
-list_t *add_node(list_t **, const char *, int);
-list_t *add_node_end(list_t **, const char *, int);
-size_t print_list_str(const list_t *);
-int delete_node_at_index(list_t **, unsigned int);
 void free_list(list_t **);
+size_t print_list_str(const list_t *);
+list_t *add_node(list_t **, const char *, int);
+int delete_node_at_index(list_t **, unsigned int);
+list_t *add_node_end(list_t **, const char *, int);
 
 /* 1-lists.c */
 size_t list_len(const list_t *);
 char **list_to_strings(list_t *);
 size_t print_list(const list_t *);
-list_t *node_starts_with(list_t *, char *, char);
 ssize_t get_node_index(list_t *, list_t *);
+list_t *node_starts_with(list_t *, char *, char);
 
 /* vars.c */
+int replace_vars(info_t *);
+int replace_alias(info_t *);
+int replace_string(char **, char *);
 int is_chain(info_t *, char *, size_t *);
 void check_chain(info_t *, char *, size_t *, size_t, size_t);
-int replace_alias(info_t *);
-int replace_vars(info_t *);
-int replace_string(char **, char *);
 
-#endif /* _JOSH_H_ */
+#endif /* _POSH_H_ */
