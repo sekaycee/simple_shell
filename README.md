@@ -264,7 +264,7 @@ $
 ## Authors & Copyrights
 
 * Kelechi Egbuta <[sekaycee](https://github.com/sekaycee)>
-* Josi Kar <[devkaycee](https://github.com/devkaycee)>
+* Jo Karachi <[devjokar](https://github.com/devjokar)>
 
 ## More information
 
